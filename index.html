@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf7f0">
+  <meta name="description" content="오늘 기분에 어울리는 한 끼 메뉴를 추천해 드려요.">
+  <title>오늘 뭐 먹지? — 기분 메뉴 추천</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="오늘 뭐 먹지 홈">
+        <span class="brand-icon" aria-hidden="true">🍊</span>
+        <span>오늘 뭐 먹지<span class="brand-dot">.</span></span>
+      </a>
+      <span class="top-note"><span class="sparkle" aria-hidden="true">✳</span> 오늘의 기분 한 스푼</span>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> YOUR MOOD, YOUR MENU</p>
+        <h1>지금 기분엔<br><span>뭐가 어울릴까?</span></h1>
+        <p class="hero-description">마음에 가까운 기분을 골라주세요.<br>오늘의 한 끼를 가볍게 골라드릴게요.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-sun"></div><span class="art-leaf leaf-one">✿</span><span class="art-leaf leaf-two">✳</span>
+        <div class="art-plate"><div class="art-food">🍛</div></div>
+        <span class="art-sticker">오늘도<br>잘 먹기!</span>
+      </div>
+    </section>
+
+    <section class="mood-section" aria-labelledby="mood-heading">
+      <div class="section-heading">
+        <div><p class="section-kicker">STEP 01</p><h2 id="mood-heading">오늘의 기분은?</h2></div>
+        <span class="select-hint">하나만 골라주세요 <span aria-hidden="true">↘</span></span>
+      </div>
+      <div class="mood-grid" role="group" aria-label="오늘의 기분 선택">
+        <button class="mood-card" type="button" data-mood="comfort" aria-pressed="false"><span class="mood-emoji">🥹</span><span class="mood-name">위로가 필요해</span><span class="mood-detail">따뜻하고 든든하게</span></button>
+        <button class="mood-card" type="button" data-mood="happy" aria-pressed="false"><span class="mood-emoji">🥳</span><span class="mood-name">기분이 좋아!</span><span class="mood-detail">신나게 즐기는 한 끼</span></button>
+        <button class="mood-card" type="button" data-mood="tired" aria-pressed="false"><span class="mood-emoji">😮‍💨</span><span class="mood-name">너무 지쳤어</span><span class="mood-detail">쉽고 간단하게</span></button>
+        <button class="mood-card" type="button" data-mood="blue" aria-pressed="false"><span class="mood-emoji">🌧️</span><span class="mood-name">조금 우울해</span><span class="mood-detail">입맛을 깨워줄 메뉴</span></button>
+        <button class="mood-card" type="button" data-mood="light" aria-pressed="false"><span class="mood-emoji">🍃</span><span class="mood-name">가볍게 먹고 싶어</span><span class="mood-detail">산뜻하고 부담 없이</span></button>
+        <button class="mood-card" type="button" data-mood="hungry" aria-pressed="false"><span class="mood-emoji">🤤</span><span class="mood-name">엄청 배고파!</span><span class="mood-detail">배부르게 제대로</span></button>
+      </div>
+      <div class="action-row">
+        <p class="action-note"><span aria-hidden="true">☝️</span> 기분을 고르면 메뉴가 나타나요</p>
+        <button class="recommend-button" id="recommendButton" type="button" disabled>메뉴 추천받기 <span aria-hidden="true">↗</span></button>
+      </div>
+    </section>
+
+    <section class="result-section" id="resultSection" aria-live="polite" aria-atomic="true" hidden>
+      <div class="result-heading"><div><p class="section-kicker">TODAY'S PICK</p><h2 id="resultTitle">오늘의 추천 메뉴</h2></div><span class="result-sparkle" aria-hidden="true">✦</span></div>
+      <article class="result-card" id="resultCard">
+        <div class="result-visual"><span class="result-food" id="resultEmoji" aria-hidden="true">🍲</span><span class="visual-caption">A LITTLE TREAT FOR YOU</span></div>
+        <div class="result-content">
+          <div class="result-tags"><span id="resultCategory">든든한 한 끼</span><span id="resultTime">약 20분</span></div>
+          <h3 id="resultName">오늘은 따뜻한 국밥 어때요?</h3>
+          <p class="result-reason" id="resultReason"></p>
+          <div class="menu-details"><div><span class="detail-icon" aria-hidden="true">🧺</span><span><small>주요 재료</small><strong id="resultIngredients"></strong></span></div><div><span class="detail-icon" aria-hidden="true">✨</span><span><small>오늘의 포인트</small><strong id="resultTip"></strong></span></div></div>
+          <button class="reroll-button" id="rerollButton" type="button"><span aria-hidden="true">⟳</span> 다른 메뉴 추천받기</button>
+        </div>
+      </article>
+      <p class="result-footnote"><span aria-hidden="true">💛</span> 어떤 메뉴든, 맛있게 먹는 게 제일 중요해요.</p>
+    </section>
+
+    <footer><span>MADE FOR YOUR EVERYDAY MOOD</span><span>오늘도 나를 잘 챙겨 먹어요 <span aria-hidden="true">♡</span></span></footer>
+  </main>
+</body>
+</html>
